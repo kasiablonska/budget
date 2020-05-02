@@ -1,4 +1,4 @@
-package pl.sda.budget.enums;
+package pl.sda.budget.api.model.enums;
 
 public enum Currency {
     PLN, EUR, USD
