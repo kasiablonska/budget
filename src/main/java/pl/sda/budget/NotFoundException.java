@@ -1,0 +1,8 @@
+package pl.sda.budget;
+
+public class NotFoundException extends RuntimeException {
+
+    public NotFoundException(String message) {
+        super(message);
+    }
+}
