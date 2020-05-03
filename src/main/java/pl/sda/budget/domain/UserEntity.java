@@ -1,7 +1,6 @@
 package pl.sda.budget.domain;
 
 import lombok.*;
-import pl.sda.budget.api.model.enums.Roles;
 
 import javax.persistence.*;
 
@@ -18,6 +17,6 @@ public class UserEntity {
     private Integer id;
     private String userName;
     private String password;
-    private Roles role;
+    private String role;
 
 }

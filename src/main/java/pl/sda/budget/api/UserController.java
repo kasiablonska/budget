@@ -18,8 +18,8 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    UserEntity<Void> user (@RequestBody NewUser newUser){
+    ResponseEntity<Void> user (@RequestBody NewUser newUser){
         userService.createUser(newUser);
-        return UserEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

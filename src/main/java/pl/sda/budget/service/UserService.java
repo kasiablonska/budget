@@ -17,11 +17,11 @@ public class UserService {
     }
 
     public void createUser(NewUser newUser) {
-        List<UserEntity<V>> usersWithSameUserName = userRepository.findAllByUserName(newUser.getUserName());
+        List<UserEntity> usersWithSameUserName = userRepository.findAllByUserName(newUser.getUserName());
         if (!usersWithSameUserName.isEmpty()) {
             throw new AlreadyExistsException("User with user name " + newUser.getUserName() + " already exists");
         } else {
-            UserEntity<V> entity = new UserEntity<V>(null, newUser.getUserName(), newUser.getPassword(), newUser.getRole());
+            UserEntity entity = new UserEntity(null, newUser.getUserName(), newUser.getPassword(), newUser.getRole());
             userRepository.save(entity);
         }
     }
