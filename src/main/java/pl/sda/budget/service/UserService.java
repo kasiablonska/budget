@@ -1,7 +1,9 @@
 package pl.sda.budget.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.sda.budget.AlreadyExistsException;
+import pl.sda.budget.NotFoundException;
 import pl.sda.budget.api.model.NewUser;
 import pl.sda.budget.api.model.UpdateUser;
 import pl.sda.budget.domain.UserEntity;
@@ -26,10 +28,14 @@ public class UserService {
             userRepository.save(entity);
         }
     }
-
+@Transactional
     public void updateUser(UpdateUser updateUser){
+UserEntity userToUpdate = userRepository.findById(updateUser.getId())
+        .orElseThrow(() -> new NotFoundException("User with ID "+updateUser.getId()+" not exist"));
 
-
+userToUpdate.setPassword(updateUser.getPassword());
+userToUpdate.setUserName(updateUser.getUserName());
+userToUpdate.setRole(updateUser.getRole());
     }
 }
 
