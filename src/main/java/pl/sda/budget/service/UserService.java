@@ -3,6 +3,7 @@ package pl.sda.budget.service;
 import org.springframework.stereotype.Service;
 import pl.sda.budget.AlreadyExistsException;
 import pl.sda.budget.api.model.NewUser;
+import pl.sda.budget.api.model.UpdateUser;
 import pl.sda.budget.domain.UserEntity;
 import pl.sda.budget.domain.UserRepository;
 
@@ -24,6 +25,11 @@ public class UserService {
             UserEntity entity = new UserEntity(null, newUser.getUserName(), newUser.getPassword(), newUser.getRole());
             userRepository.save(entity);
         }
+    }
+
+    public void updateUser(UpdateUser updateUser){
+
+
     }
 }
 
