@@ -25,8 +25,8 @@ public class ExpenseService {
     }
 
     public void createExpense(NewExpense newExpense) {
-        List<ExpenseEntity> carsWithSamePlate = expenseRepository.findAllByTypeOfExpense(newExpense.getTypeOfExpense());
-        if (!carsWithSamePlate.isEmpty()) {
+        List<ExpenseEntity> expensesWithSameType = expenseRepository.findAllByTypeOfExpense(newExpense.getTypeOfExpense());
+        if (!expensesWithSameType.isEmpty()) {
             throw new AlreadyExistsException("Expense with type " + newExpense.getTypeOfExpense() + " already exists");
         }
         ExpenseEntity entity = new ExpenseEntity(null, newExpense.getTypeOfExpense());
